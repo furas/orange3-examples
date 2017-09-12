@@ -1,8 +1,10 @@
+# Data
+
 Example data from:
 [Wikipedia > Naive_Bayes_classifier > Examples](https://en.wikipedia.org/wiki/Naive_Bayes_classifier#Examples)
 
 
-__Train data__
+__Train data (train.csv)__
 
      sex    | height (feet) | weight (lbs) | foot size(inches)
     --------+---------------+--------------+-----------------
@@ -16,7 +18,7 @@ __Train data__
      female | 5.75 (5'9")   | 150          | 9
 
 
-__Prediction data__
+__Prediction data (test.csv)__
 
      sex    | height (feet) | weight (lbs) | foot size(inches)
     --------+---------------+--------------+-----------------
@@ -26,8 +28,11 @@ __Prediction result__:
     
     female
 
+---
 
-# Orange3
+# Orange3 
+
+### wikipedia-bayes-example.ows
 
 ![](images/wikipedia-bayes-example.png?raw=true)
 
@@ -49,11 +54,14 @@ __Prediction result__:
 ### Predictions
 ![](images/predictions.png?raw=true)
 
-### Data Table Result
+### Data Table (result)
 ![](images/data-table-result.png?raw=true)
 
+---
 
-# SKLearn (main.py)
+# SKLearn 
+
+### main.py
 
     === train_X ===
        height  weight  foot_size

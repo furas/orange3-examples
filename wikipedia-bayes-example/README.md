@@ -4,11 +4,11 @@ Table of contents
 * [Data](#data)
     * [Train data (train.csv)](#train-data-traincsv)
     * [Prediction data (predict.csv)](#prediction-data-predictcsv)
-    * [Prediction result:](#prediction-result:)
-* [Using GUI ([Orange3](https://orange.biolab.si/))](#using-gui-[orange3]https://orangebiolabsi/)
+    * [Prediction result](#prediction-result)
+* [Using GUI (Orange3)](#using-gui-orange3)
     * [wikipedia-bayes-example.ows](#wikipedia-bayes-exampleows)
     * [Data Table (train)](#data-table-train)
-    * [Test & Score](#test-&-score)
+    * [Test & Score](#test--score)
     * [Confusion Matrix](#confusion-matrix)
     * [Tree Viewer](#tree-viewer)
     * [Data Table (predict)](#data-table-predict)
@@ -47,7 +47,7 @@ Example data from:
     --------+---------------+--------------+-----------------
      ?      | 6             | 130          | 8
 
-### Prediction result: 
+### Prediction result 
     
     female
 
@@ -148,7 +148,7 @@ Example data from:
     AdaBoostClassifier       : female
     SVC                      : female
 
-###ml-from-scratch-version.py
+### ml-from-scratch-version.py
   
 [ML-From-Scratch](https://github.com/eriklindernoren/ML-From-Scratch)
     

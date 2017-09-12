@@ -59,7 +59,7 @@ __Prediction result__:
 
 ---
 
-# SKLearn 
+# scikit-learn 
 
 ### main.py
 

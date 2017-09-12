@@ -36,7 +36,7 @@ predict = Table.from_file('predict.csv')
 print('\n=== predict.X ===')
 print(predict.X)
 
-### learn and predict ###
+### train and predict ###
 
 print('\n=== results ===')
 

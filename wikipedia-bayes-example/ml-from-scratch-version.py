@@ -1,104 +1,87 @@
 import pandas as pd
-from sklearn.naive_bayes import GaussianNB
-from sklearn.linear_model import LogisticRegression
-from sklearn.tree import DecisionTreeClassifier
-from sklearn.neighbors import KNeighborsClassifier
-from sklearn.ensemble import RandomForestClassifier, AdaBoostClassifier
-from sklearn.svm import SVC
+#from sklearn.naive_bayes import GaussianNB
+#from sklearn.linear_model import LogisticRegression
+#from sklearn.tree import DecisionTreeClassifier
+#from sklearn.neighbors import KNeighborsClassifier
+#from sklearn.ensemble import RandomForestClassifier, AdaBoostClassifier
+#from sklearn.svm import SVC
 
-''' create models '''
+import numpy as np
+from mlfromscratch.supervised_learning import Adaboost
+from mlfromscratch.supervised_learning import ClassificationTree
+from mlfromscratch.supervised_learning import KNN
+from mlfromscratch.supervised_learning import LogisticRegression
+from mlfromscratch.supervised_learning import NaiveBayes
+from mlfromscratch.supervised_learning import RandomForest
+from mlfromscratch.supervised_learning import SupportVectorMachine
+from mlfromscratch.supervised_learning import XGBoost
+
+### create models ###
 
 models = [
-    GaussianNB(),
-    LogisticRegression(),
-    DecisionTreeClassifier(),
-    KNeighborsClassifier(),
-    RandomForestClassifier(), 
-    AdaBoostClassifier(),
-    SVC(),
+    #Adaboost(), # error: `float` has no `exp`
+    ClassificationTree(),
+#    KNN(), # doesn't have fit(), it uses predict(test_X, train_X, train_Y)
+#    LogisticRegression(), # not work
+    NaiveBayes(),
+    RandomForest(), 
+#    SupportVectorMachine(),
+    XGBoost(),
 ]
-        
-''' read train data '''
-        
+
+### read train data ###
+
 train_X = pd.read_csv('train.csv')
-train_y = train_X.pop('sex')
+# move `sex` from X to Y
+train_Y = train_X.pop('sex')
+
+# get numpy array
+train_X = train_X.values
+train_Y = train_Y.values
+
+# convert names (female/male) into values (0/1)
+# because model can't work with strings
+target_names = np.unique(train_Y)
+for val, name in enumerate(target_names):
+    train_Y[train_Y == name] = val
 
 print('\n=== train_X ===')
 print(train_X)
-print('\n=== train_y ===')
-print(train_y)
+print('\n=== train_Y ===')
+print(train_Y)
 
-''' read test data '''
+### read predict data ###
 
-test_X = pd.read_csv('test.csv')
+predict_X = pd.read_csv('predict.csv')
+predict_X = predict_X.values
 
-print('\n=== test_X ===')
-print(test_X)
+print('\n=== predict_X ===')
+print(predict_X)
 
-''' learn and predict '''
+### learn and predict ###
 
 print('\n=== results ===')
 
 for m in models:
-    # learn
-    m.fit(train_X, train_y)
+    # train
+    m.fit(train_X, train_Y)
     
     # predict
-    result = m.predict(test_X)
+    result = m.predict(predict_X)
     
     # print result
-    print('{:23s}: {}'.format(m.__class__.__name__, result[0]))
+    result = target_names[result[0]]
+    print('{:25s}: {}'.format(m.__class__.__name__, result))
 
+#----------------------------------------------------------------------
 
+m = KNN()
 
-import mlfromscratch.supervised_learning
-from mlfromscratch.supervised_learning.neural_network import NeuralNetwork
-from mlfromscratch.utils.optimizers import GradientDescent
-from mlfromscratch.utils.loss_functions import SquareLoss
-from mlfromscratch.utils.layers import Dense, Activation
-from mlfromscratch.utils.data_operation import accuracy_score
+# predict
+result = m.predict(predict_X, train_X, train_Y)
 
-import numpy as np
+# print result
+result = target_names[result[0]]
+print('{:25s}: {}'.format(m.__class__.__name__, result))
 
-X_train = np.array([[0,0], [0,1], [1,0], [1, 1]])
-y_train = np.array([[1], [0], [0], [1]])
-#y_train = np.array([1, 0, 0, 1])
-
-clf = NeuralNetwork(optimizer=GradientDescent,
-                    loss=SquareLoss)
-
-clf.add(Dense(n_units=3, input_shape=(2,)))
-clf.add(Activation('sigmoid'))
-clf.add(Dense(n_units=1))#, input_shape=(2,)))
-clf.add(Activation('sigmoid'))
-print(y_train)
-
-train_err, val_err = clf.fit(X=X_train, y=y_train, n_epochs=150, batch_size=4)
-print('train_err:', train_err)
-print('val_err:', val_err)
-
-y_pred = np.argmax(clf.predict(X_train), axis=1)
-print('pred:', y_pred)
-
-accuracy = accuracy_score(y_train, y_pred)
-print('Accuracy:', accuracy)
-
-#print(clf.summary())
-
-for x in clf.layers:
-    print(x.layer_input)
-    print(dir(x))
-    print(dir(x.parameters))
-    print(dir(x.activation))
-    print(dir(x.activation.function))
-    print(dir(x.activation.gradient))
-    print(x.activation.gradient.im_class)
-    print(dir(x.activation.gradient.im_func))
-    print(x.activation.gradient.im_func.func_closure)
-    print(x.activation.gradient.im_func.func_code)
-    print(x.activation.gradient.im_func.func_defaults)
-    print(x.activation.gradient.im_func.func_dict)
-    #print(x.activation.gradient.im_func.func_doc)
-    #rint(x.activation.gradient.im_func.func_globals)
-    print(x.activation.gradient.im_func.func_name)
-['func_closure', 'func_code', 'func_defaults', 'func_dict', 'func_doc', 'func_globals', 'func_name']
+#----------------------------------------------------------------------

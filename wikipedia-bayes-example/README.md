@@ -1,23 +1,25 @@
 Table of contents
 =================
 
-    * [Data](#data)
-        * [Train data (train.csv)](#train-data-traincsv)
-        * [Prediction data (predict.csv)](#prediction-data-predictcsv)
-        * [Prediction result:](#prediction-result:)
-    * [Using GUI ([Orange3](https://orange.biolab.si/))](#using-gui-[orange3]https://orangebiolabsi/)
-        * [wikipedia-bayes-example.ows](#wikipedia-bayes-exampleows)
-        * [Data Table (train)](#data-table-train)
-        * [Test & Score](#test-&-score)
-        * [Confusion Matrix](#confusion-matrix)
-        * [Tree Viewer](#tree-viewer)
-        * [Data Table (predict)](#data-table-predict)
-        * [Predictions](#predictions)
-        * [Data Table (result)](#data-table-result)
-    * [Using code](#using-code)
-        * [orange-version.py](#orange-versionpy)
-        * [sklearn-version.py](#sklearn-versionpy)
-        * [ml-from-scratch-version.py](#ml-from-scratch-versionpy)
+* [Data](#data)
+    * [Train data (train.csv)](#train-data-traincsv)
+    * [Prediction data (predict.csv)](#prediction-data-predictcsv)
+    * [Prediction result:](#prediction-result:)
+* [Using GUI ([Orange3](https://orange.biolab.si/))](#using-gui-[orange3]https://orangebiolabsi/)
+    * [wikipedia-bayes-example.ows](#wikipedia-bayes-exampleows)
+    * [Data Table (train)](#data-table-train)
+    * [Test & Score](#test-&-score)
+    * [Confusion Matrix](#confusion-matrix)
+    * [Tree Viewer](#tree-viewer)
+    * [Data Table (predict)](#data-table-predict)
+    * [Predictions](#predictions)
+    * [Data Table (result)](#data-table-result)
+* [Using code](#using-code)
+    * [orange-version.py](#orange-versionpy)
+    * [sklearn-version.py](#sklearn-versionpy)
+    * [ml-from-scratch-version.py](#ml-from-scratch-versionpy)
+
+---
         
 # Data
 

@@ -18,7 +18,7 @@ __Train data (train.csv)__
      female | 5.75 (5'9")   | 150          | 9
 
 
-__Prediction data (test.csv)__
+__Prediction data (predict.csv)__
 
      sex    | height (feet) | weight (lbs) | foot size(inches)
     --------+---------------+--------------+-----------------
@@ -30,7 +30,7 @@ __Prediction result__:
 
 ---
 
-# Orange3 
+# Using GUI ([Orange3](https://orange.biolab.si/))
 
 ### wikipedia-bayes-example.ows
 
@@ -48,8 +48,8 @@ __Prediction result__:
 ### Tree Viewer
 ![](images/tree-viewer.png?raw=true)
 
-### Data Table (test)
-![](images/data-table-test.png?raw=true)
+### Data Table (predict)
+![](images/data-table-predict.png?raw=true)
 
 ### Predictions
 ![](images/predictions.png?raw=true)
@@ -59,9 +59,37 @@ __Prediction result__:
 
 ---
 
-# scikit-learn 
+# Using code
 
-### main.py
+### orange-version.py
+
+    === train.X ===
+    [[   6.    180.     12.  ]
+     [   5.92  190.     11.  ]
+     [   5.58  170.     12.  ]
+     [   5.92  165.     10.  ]
+     [   5.    100.      6.  ]
+     [   5.5   150.      8.  ]
+     [   5.42  130.      7.  ]
+     [   5.75  150.      9.  ]]
+    
+    === train.Y ===
+    [ 1.  1.  1.  1.  0.  0.  0.  0.]
+    
+    === predict.X ===
+    [[   6.  130.    8.]]
+    
+    === results ===
+    LogisticRegressionLearner: female
+    NaiveBayesLearner        : female
+    TreeLearner              : female
+    RandomForestLearner      : female
+    KNNLearner               : female
+    SVMLearner               : female
+
+### sklearn-version.py
+
+[scikit-learn](http://scikit-learn.org/stable/) + [pandas](http://pandas.pydata.org/)
 
     === train_X ===
        height  weight  foot_size
@@ -74,7 +102,7 @@ __Prediction result__:
     6    5.42     130          7
     7    5.75     150          9
 
-    === train_y ===
+    === train_Y ===
     0      male
     1      male
     2      male
@@ -85,7 +113,7 @@ __Prediction result__:
     7    female
     Name: sex, dtype: object
 
-    === test_X ===
+    === predict_X ===
        height  weight  foot_size
     0       6     130          8
 
@@ -98,3 +126,8 @@ __Prediction result__:
     AdaBoostClassifier     : female
     SVC                    : female
 
+### ml-from-scratch-version.py
+  
+[ML-From-Scratch](https://github.com/eriklindernoren/ML-From-Scratch)
+
+__TODO:__ create code
